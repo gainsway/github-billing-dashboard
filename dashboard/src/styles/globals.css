@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body { height: 100%; }
+body { @apply bg-cream font-sans antialiased; }
+
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+.btn-magnetic {
+  @apply relative overflow-hidden rounded-[2rem] px-5 py-3 font-medium tracking-tightish transition-transform;
+}
+.btn-magnetic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-120%);
+  transition: transform 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn-magnetic:hover { transform: scale(1.02); }
+.btn-magnetic:hover::before { transform: translateX(0); }
+
+.glass {
+  background: rgba(242, 240, 233, 0.6);
+  border: 1px solid rgba(46, 64, 54, 0.15);
+  backdrop-filter: blur(28px);
+}
+
+.telemetry { @apply font-mono text-[12px] md:text-[13px]; }
